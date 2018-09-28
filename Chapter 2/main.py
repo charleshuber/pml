@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from perceptron import Perceptron
@@ -23,13 +21,8 @@ ppn = Perceptron(eta=0.1, n_iter=10)
 ppn.fit(X, y)
 
 """
-ppn.fit(X, y)
 plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
 plt.xlabel('Epochs')
 plt.ylabel('Number of misclassifications')
 """
-plot_decision_regions(X, y, classifier=ppn, plt=plt)
-plt.xlabel('sepal length [cm]')
-plt.ylabel('petal length [cm]')
-plt.legend(loc='upper left')
-plt.show()
+plot_decision_regions(X, y, classifier=ppn)
