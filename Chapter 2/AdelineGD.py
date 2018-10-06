@@ -52,6 +52,7 @@ class AdelineGD(object):
     def net_input(self, X):
         """Calculate net input"""
         net_input = np.dot(X, self.w_[1:]) + self.w_[0]
+        #net_input = np.dot(X, self.w_[1:])
         return net_input
 
     def activation(self, X):

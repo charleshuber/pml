@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from perceptron import Perceptron
 from lib import plot_decision_regions
 
