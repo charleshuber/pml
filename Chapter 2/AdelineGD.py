@@ -1,7 +1,7 @@
 import numpy as np
 
 class AdelineGD(object):
-    """Perceptron classifier
+    """ADAptative LInear NEuron classifier
     Parameters
     --------------------
     eta : float
