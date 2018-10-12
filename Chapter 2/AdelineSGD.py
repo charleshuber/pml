@@ -27,7 +27,7 @@ class AdelineSGD(object):
         self.n_iter = n_iter
         self.w_initialized = False
         self.shuffle = shuffle
-        if(random_state)
+        if random_state:
             seed(random_state)
 
     def fit(self, X, y):
