@@ -42,6 +42,7 @@ class Perceptron(object):
         for _ in range(self.n_iter):
             errors = 0;
             for xi, target in zip(X, y):
+                #print('iter:', self.n_iter, ' / xi: ', xi, ' / target: ', target, ' / self.net_input(xi): ', self.net_input(xi))
                 update = self.eta * (target - self.predict(xi))
                 self.w_[1:] += update * xi
                 self.w_[0] += update

@@ -43,6 +43,7 @@ class AdelineGD(object):
         for i in range(self.n_iter):
             output = self.net_input(X)
             errors = (y - output)
+            #print('iter:', self.n_iter, ' / output: ', output, ' / errors: ', errors, ' / self.net_input(X): ', self.net_input(X))
             self.w_[1:] += self.eta * X.T.dot(errors)
             self.w_[0] += self.eta * errors.sum()
             cost = (errors**2).sum() / 2.0
