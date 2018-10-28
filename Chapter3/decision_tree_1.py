@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import export_graphviz
 from sklearn.metrics import accuracy_score
 from lib_scikitlearn import plot_decision_regions
 
@@ -32,6 +33,9 @@ X_combined_std = np.vstack((X_train_std, X_test_std))
 y_combined = np.hstack((y_train, y_test))
 
 plot_decision_regions(X=X_combined_std, y=y_combined, classifier=tree, plt=plt, test_idx=range(105,150))
+
+export_graphviz(tree, out_file='tree.dot', feature_names=['petal length','petal width'])
+
 plt.xlabel('petal length [standardized]')
 plt.ylabel('petal width [standardized]')
 plt.legend(loc='upper left')
