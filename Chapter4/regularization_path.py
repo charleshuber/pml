@@ -2,10 +2,10 @@
 
 import pandas as pd
 import numpy as np
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-import matplotlib.pylot as plt
+import matplotlib.pyplot as plt
 
 df_wine = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data', header=None)
 df_wine.columns = ['Class label','Alcohol',
@@ -27,7 +27,7 @@ fig = plt.figure()
 ax = plt.subplot(111)
 colors = ['blue','green','red','cyan','magenta','yellow','black','pink','lightgreen','lightblue','gray','indigo','orange']
 weights, params = [], []
-for c in np.arange(-4, 6):
+for c in np.arange(-4, 6, dtype='float'):
     lr = LogisticRegression(penalty='l1', C=10**c, random_state=0)
     lr.fit(X_train_std, y_train)
     weights.append(lr.coef_[1])
