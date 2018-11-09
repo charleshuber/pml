@@ -4,7 +4,10 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+import matplotlib.pyplot as plt
+from sbs import SBS
+
 df_wine = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data', header=None)
 df_wine.columns = ['Class label','Alcohol',
 'Malic acid','Ash',
@@ -22,10 +25,14 @@ stdsc = StandardScaler()
 X_train_std = stdsc.fit_transform(X_train)
 X_test_std = stdsc.transform(X_test)
 
-lr = LogisticRegression(penalty='l1', C=0.1)
-lr.fit(X_train_std, y_train)
-print('Training accuracy:', lr.score(X_train_std, y_train))
-print('Test accuracy:', lr.score(X_test_std, y_test))
+knn = KNeighborsClassifier(n_neighbors=2)
+sbs = SBS(knn, 1)
+sbs.fit(X_train_std, y_train)
 
-print(lr.intercept_)
-print(lr.coef_)
+k_feat = [len(k) for k in sbs.subsets_]
+plt.plot(k_feat, sbs.scores_, marker = 'o')
+plt.ylim([0.7, 1.1])
+plt.ylabel('Accuracy')
+plt.xlabel('Number of features')
+plt.grid()
+plt.show()
